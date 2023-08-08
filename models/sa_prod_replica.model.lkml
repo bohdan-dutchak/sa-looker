@@ -26,16 +26,7 @@ persist_with: sa_prod_replica_default_datagroup
 # Each joined view also needs to define a primary key.
 
 
-# explore: routines_dailyproductgroup {
-#   label: "Products"
-
-#   join: routines_dailyproduct{
-#     type: inner
-#     relationship: one_to_many
-#     sql_on: ${routines_dailyproductgroup.id}=${routines_dailyproduct.group_id} ;;
-#   }
-# }
-
+explore: routines_dailyquestionnaire {}
 
 explore: users_user {
   label: "Joined_data"
@@ -57,13 +48,4 @@ explore: users_user {
     relationship: one_to_many
     sql_on: ${users_user.id}=${products.user_id} ;;
   }
-
-  # join: routines_dailyproductgroup {
-  #   type: left_outer
-  #   relationship: one_to_many
-  #   sql_on: ${users_user.id}=${routines_dailyproductgroup.user_id} ;;
-  # }
-
-
-
 }
