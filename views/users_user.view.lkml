@@ -17,107 +17,290 @@ view: users_user {
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Avatar" in Explore.
 
-  dimension: avatar {
-    type: string
-    sql: ${TABLE}."avatar" ;;
-  }
-  # Dates and timestamps can be represented in Looker using a dimension group of type: time.
-  # Looker converts dates and timestamps to the specified timeframes within the dimension group.
-
   dimension_group: date_joined {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}."date_joined" ;;
   }
 
-  dimension: device {
-    type: string
-    sql: ${TABLE}."device" ;;
-  }
-
-  dimension: email {
-    type: string
-    sql: ${TABLE}."email" ;;
-  }
-
-  dimension: first_name {
-    type: string
-    sql: ${TABLE}."first_name" ;;
-  }
-
   dimension: geolocation {
     type: string
-    sql: ${TABLE}."geolocation" ;;
-  }
+    map_layer_name: countries
+        sql: CASE
 
-  dimension: haut_ai_subject_id {
-    type: string
-    sql: ${TABLE}."haut_ai_subject_id" ;;
-  }
-
-  dimension: health_data {
-    type: yesno
-    sql: ${TABLE}."health_data" ;;
-  }
-
-  dimension: is_active {
-    type: yesno
-    sql: ${TABLE}."is_active" ;;
-  }
-
-  dimension: is_amplitude_synced {
-    type: yesno
-    sql: ${TABLE}."is_amplitude_synced" ;;
-  }
-
-  dimension: is_staff {
-    type: yesno
-    sql: ${TABLE}."is_staff" ;;
-  }
-
-  dimension: is_superuser {
-    type: yesno
-    sql: ${TABLE}."is_superuser" ;;
-  }
-
-  dimension: is_verified {
-    type: yesno
-    sql: ${TABLE}."is_verified" ;;
-  }
-
-  dimension: language_id {
-    type: string
-    sql: ${TABLE}."language_id" ;;
-  }
-
-  dimension_group: last_login {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."last_login" ;;
-  }
-
-  dimension: last_name {
-    type: string
-    sql: ${TABLE}."last_name" ;;
+    WHEN LOWER(${TABLE}."geolocation") = 'xk' THEN 'Kosovo'
+    WHEN LOWER(${TABLE}."geolocation") = 'af' THEN 'Afghanistan'
+    WHEN LOWER(${TABLE}."geolocation") = 'ax' THEN 'Åland Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'al' THEN 'Albania'
+    WHEN LOWER(${TABLE}."geolocation") = 'dz' THEN 'Algeria'
+    WHEN LOWER(${TABLE}."geolocation") = 'as' THEN 'American Samoa'
+    WHEN LOWER(${TABLE}."geolocation") = 'ad' THEN 'Andorra'
+    WHEN LOWER(${TABLE}."geolocation") = 'ao' THEN 'Angola'
+    WHEN LOWER(${TABLE}."geolocation") = 'ai' THEN 'Anguilla'
+    WHEN LOWER(${TABLE}."geolocation") = 'aq' THEN 'Antarctica'
+    WHEN LOWER(${TABLE}."geolocation") = 'ag' THEN 'Antigua & Barbuda'
+    WHEN LOWER(${TABLE}."geolocation") = 'antigua and barbuda' THEN 'Antigua & Barbuda'
+    WHEN LOWER(${TABLE}."geolocation") = 'ar' THEN 'Argentina'
+    WHEN LOWER(${TABLE}."geolocation") = 'am' THEN 'Armenia'
+    WHEN LOWER(${TABLE}."geolocation") = 'aw' THEN 'Aruba'
+    WHEN LOWER(${TABLE}."geolocation") = 'au' THEN 'Australia'
+    WHEN LOWER(${TABLE}."geolocation") = 'at' THEN 'Austria'
+    WHEN LOWER(${TABLE}."geolocation") = 'az' THEN 'Azerbaijan'
+    WHEN LOWER(${TABLE}."geolocation") = 'bs' THEN 'Bahamas'
+    WHEN LOWER(${TABLE}."geolocation") = 'bh' THEN 'Bahrain'
+    WHEN LOWER(${TABLE}."geolocation") = 'bd' THEN 'Bangladesh'
+    WHEN LOWER(${TABLE}."geolocation") = 'bb' THEN 'Barbados'
+    WHEN LOWER(${TABLE}."geolocation") = 'by' THEN 'Belarus'
+    WHEN LOWER(${TABLE}."geolocation") = 'be' THEN 'Belgium'
+    WHEN LOWER(${TABLE}."geolocation") = 'bz' THEN 'Belize'
+    WHEN LOWER(${TABLE}."geolocation") = 'bj' THEN 'Benin'
+    WHEN LOWER(${TABLE}."geolocation") = 'bm' THEN 'Bermuda'
+    WHEN LOWER(${TABLE}."geolocation") = 'bt' THEN 'Bhutan'
+    WHEN LOWER(${TABLE}."geolocation") = 'bo' THEN 'Bolivia'
+    WHEN LOWER(${TABLE}."geolocation") = 'bq' THEN 'Bonaire'
+    WHEN LOWER(${TABLE}."geolocation") = 'ba' THEN 'Bosnia & Herzegovina'
+    WHEN LOWER(${TABLE}."geolocation") = 'bosnia and herzegovina' THEN 'Bosnia & Herzegovina'
+    WHEN LOWER(${TABLE}."geolocation") = 'bw' THEN 'Botswana'
+    WHEN LOWER(${TABLE}."geolocation") = 'bv' THEN 'Bouvet Island'
+    WHEN LOWER(${TABLE}."geolocation") = 'br' THEN 'Brazil'
+    WHEN LOWER(${TABLE}."geolocation") = 'io' THEN 'British Indian Ocean Territory'
+    WHEN LOWER(${TABLE}."geolocation") = 'bn' THEN 'Brunei'
+    WHEN LOWER(${TABLE}."geolocation") = 'bg' THEN 'Bulgaria'
+    WHEN LOWER(${TABLE}."geolocation") = 'bf' THEN 'Burkina Faso'
+    WHEN LOWER(${TABLE}."geolocation") = 'bi' THEN 'Burundi'
+    WHEN LOWER(${TABLE}."geolocation") = 'cv' THEN 'Cape Verde'
+    WHEN LOWER(${TABLE}."geolocation") = 'kh' THEN 'Cambodia'
+    WHEN LOWER(${TABLE}."geolocation") = 'cm' THEN 'Cameroon'
+    WHEN LOWER(${TABLE}."geolocation") = 'ca' THEN 'Canada'
+    WHEN LOWER(${TABLE}."geolocation") = 'ky' THEN 'Cayman Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'cf' THEN 'Central African Republic'
+    WHEN LOWER(${TABLE}."geolocation") = 'td' THEN 'Chad'
+    WHEN LOWER(${TABLE}."geolocation") = 'cl' THEN 'Chile'
+    WHEN LOWER(${TABLE}."geolocation") = 'cn' THEN 'China'
+    WHEN LOWER(${TABLE}."geolocation") = 'cx' THEN 'Christmas Island'
+    WHEN LOWER(${TABLE}."geolocation") = 'cc' THEN 'Cocos'
+    WHEN LOWER(${TABLE}."geolocation") = 'co' THEN 'Colombia'
+    WHEN LOWER(${TABLE}."geolocation") = 'km' THEN 'Comoros'
+    WHEN LOWER(${TABLE}."geolocation") = 'cg' THEN 'Congo - Brazzaville'
+    WHEN LOWER(${TABLE}."geolocation") = 'cd' THEN 'Congo - Kinshasa'
+    WHEN LOWER(${TABLE}."geolocation") = 'ck' THEN 'Cook Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'cr' THEN 'Costa Rica'
+    WHEN LOWER(${TABLE}."geolocation") = 'ci' THEN 'Côte d’Ivoire'
+    WHEN LOWER(${TABLE}."geolocation") = 'hr' THEN 'Croatia'
+    WHEN LOWER(${TABLE}."geolocation") = 'cu' THEN 'Cuba'
+    WHEN LOWER(${TABLE}."geolocation") = 'cw' THEN 'Curaçao'
+    WHEN LOWER(${TABLE}."geolocation") = 'cy' THEN 'Cyprus'
+    WHEN LOWER(${TABLE}."geolocation") = 'cz' THEN 'Czechia'
+    WHEN LOWER(${TABLE}."geolocation") = 'czech republic' THEN 'Czechia'
+    WHEN LOWER(${TABLE}."geolocation") = 'dk' THEN 'Denmark'
+    WHEN LOWER(${TABLE}."geolocation") = 'dj' THEN 'Djibouti'
+    WHEN LOWER(${TABLE}."geolocation") = 'dm' THEN 'Dominica'
+    WHEN LOWER(${TABLE}."geolocation") = 'do' THEN 'Dominican Republic'
+    WHEN LOWER(${TABLE}."geolocation") = 'ec' THEN 'Ecuador'
+    WHEN LOWER(${TABLE}."geolocation") = 'eg' THEN 'Egypt'
+    WHEN LOWER(${TABLE}."geolocation") = 'sv' THEN 'El Salvador'
+    WHEN LOWER(${TABLE}."geolocation") = 'gq' THEN 'Equatorial Guinea'
+    WHEN LOWER(${TABLE}."geolocation") = 'er' THEN 'Eritrea'
+    WHEN LOWER(${TABLE}."geolocation") = 'ee' THEN 'Estonia'
+    WHEN LOWER(${TABLE}."geolocation") = 'sz' THEN 'Eswatini'
+    WHEN LOWER(${TABLE}."geolocation") = 'et' THEN 'Ethiopia'
+    WHEN LOWER(${TABLE}."geolocation") = 'fk' THEN 'Falkland Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'fo' THEN 'Faroe Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'fj' THEN 'Fiji'
+    WHEN LOWER(${TABLE}."geolocation") = 'fi' THEN 'Finland'
+    WHEN LOWER(${TABLE}."geolocation") = 'fr' THEN 'France'
+    WHEN LOWER(${TABLE}."geolocation") = 'gf' THEN 'French Guiana'
+    WHEN LOWER(${TABLE}."geolocation") = 'pf' THEN 'French Polynesia'
+    WHEN LOWER(${TABLE}."geolocation") = 'tf' THEN 'French Southern Territories'
+    WHEN LOWER(${TABLE}."geolocation") = 'ga' THEN 'Gabon'
+    WHEN LOWER(${TABLE}."geolocation") = 'gm' THEN 'Gambia'
+    WHEN LOWER(${TABLE}."geolocation") = 'ge' THEN 'Georgia'
+    WHEN LOWER(${TABLE}."geolocation") = 'de' THEN 'Germany'
+    WHEN LOWER(${TABLE}."geolocation") = 'gh' THEN 'Ghana'
+    WHEN LOWER(${TABLE}."geolocation") = 'gi' THEN 'Gibraltar'
+    WHEN LOWER(${TABLE}."geolocation") = 'gr' THEN 'Greece'
+    WHEN LOWER(${TABLE}."geolocation") = 'gl' THEN 'Greenland'
+    WHEN LOWER(${TABLE}."geolocation") = 'gd' THEN 'Grenada'
+    WHEN LOWER(${TABLE}."geolocation") = 'gp' THEN 'Guadeloupe'
+    WHEN LOWER(${TABLE}."geolocation") = 'gu' THEN 'Guam'
+    WHEN LOWER(${TABLE}."geolocation") = 'gt' THEN 'Guatemala'
+    WHEN LOWER(${TABLE}."geolocation") = 'gg' THEN 'Guernsey'
+    WHEN LOWER(${TABLE}."geolocation") = 'gn' THEN 'Guinea'
+    WHEN LOWER(${TABLE}."geolocation") = 'gw' THEN 'Guinea-Bissau'
+    WHEN LOWER(${TABLE}."geolocation") = 'gy' THEN 'Guyana'
+    WHEN LOWER(${TABLE}."geolocation") = 'ht' THEN 'Haiti'
+    WHEN LOWER(${TABLE}."geolocation") = 'hm' THEN 'Heard Island & McDonald Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'va' THEN 'Holy See'
+    WHEN LOWER(${TABLE}."geolocation") = 'hn' THEN 'Honduras'
+    WHEN LOWER(${TABLE}."geolocation") = 'hk' THEN 'Hong Kong'
+    WHEN LOWER(${TABLE}."geolocation") = 'hu' THEN 'Hungary'
+    WHEN LOWER(${TABLE}."geolocation") = 'is' THEN 'Iceland'
+    WHEN LOWER(${TABLE}."geolocation") = 'in' THEN 'India'
+    WHEN LOWER(${TABLE}."geolocation") = 'id' THEN 'Indonesia'
+    WHEN LOWER(${TABLE}."geolocation") = 'ir' THEN 'Iran'
+    WHEN LOWER(${TABLE}."geolocation") = 'iq' THEN 'Iraq'
+    WHEN LOWER(${TABLE}."geolocation") = 'ie' THEN 'Ireland'
+    WHEN LOWER(${TABLE}."geolocation") = 'im' THEN 'Isle of Man'
+    WHEN LOWER(${TABLE}."geolocation") = 'il' THEN 'Israel'
+    WHEN LOWER(${TABLE}."geolocation") = 'it' THEN 'Italy'
+    WHEN LOWER(${TABLE}."geolocation") = 'jm' THEN 'Jamaica'
+    WHEN LOWER(${TABLE}."geolocation") = 'jp' THEN 'Japan'
+    WHEN LOWER(${TABLE}."geolocation") = 'je' THEN 'Jersey'
+    WHEN LOWER(${TABLE}."geolocation") = 'jo' THEN 'Jordan'
+    WHEN LOWER(${TABLE}."geolocation") = 'kz' THEN 'Kazakhstan'
+    WHEN LOWER(${TABLE}."geolocation") = 'ke' THEN 'Kenya'
+    WHEN LOWER(${TABLE}."geolocation") = 'ki' THEN 'Kiribati'
+    WHEN LOWER(${TABLE}."geolocation") = 'kp' THEN 'Korea'
+    WHEN LOWER(${TABLE}."geolocation") = 'kr' THEN 'South Korea'
+    WHEN LOWER(${TABLE}."geolocation") = 'kw' THEN 'Kuwait'
+    WHEN LOWER(${TABLE}."geolocation") = 'kg' THEN 'Kyrgyzstan'
+    WHEN LOWER(${TABLE}."geolocation") = 'la' THEN 'Laos'
+    WHEN LOWER(${TABLE}."geolocation") = 'lv' THEN 'Latvia'
+    WHEN LOWER(${TABLE}."geolocation") = 'lb' THEN 'Lebanon'
+    WHEN LOWER(${TABLE}."geolocation") = 'ls' THEN 'Lesotho'
+    WHEN LOWER(${TABLE}."geolocation") = 'lr' THEN 'Liberia'
+    WHEN LOWER(${TABLE}."geolocation") = 'ly' THEN 'Libya'
+    WHEN LOWER(${TABLE}."geolocation") = 'li' THEN 'Liechtenstein'
+    WHEN LOWER(${TABLE}."geolocation") = 'lt' THEN 'Lithuania'
+    WHEN LOWER(${TABLE}."geolocation") = 'lu' THEN 'Luxembourg'
+    WHEN LOWER(${TABLE}."geolocation") = 'mo' THEN 'Macao'
+    WHEN LOWER(${TABLE}."geolocation") = 'mg' THEN 'Madagascar'
+    WHEN LOWER(${TABLE}."geolocation") = 'mw' THEN 'Malawi'
+    WHEN LOWER(${TABLE}."geolocation") = 'my' THEN 'Malaysia'
+    WHEN LOWER(${TABLE}."geolocation") = 'mv' THEN 'Maldives'
+    WHEN LOWER(${TABLE}."geolocation") = 'ml' THEN 'Mali'
+    WHEN LOWER(${TABLE}."geolocation") = 'mt' THEN 'Malta'
+    WHEN LOWER(${TABLE}."geolocation") = 'mh' THEN 'Marshall Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'mq' THEN 'Martinique'
+    WHEN LOWER(${TABLE}."geolocation") = 'mr' THEN 'Mauritania'
+    WHEN LOWER(${TABLE}."geolocation") = 'mu' THEN 'Mauritius'
+    WHEN LOWER(${TABLE}."geolocation") = 'yt' THEN 'Mayotte'
+    WHEN LOWER(${TABLE}."geolocation") = 'mx' THEN 'Mexico'
+    WHEN LOWER(${TABLE}."geolocation") = 'fm' THEN 'Micronesia'
+    WHEN LOWER(${TABLE}."geolocation") = 'md' THEN 'Moldova'
+    WHEN LOWER(${TABLE}."geolocation") = 'mc' THEN 'Monaco'
+    WHEN LOWER(${TABLE}."geolocation") = 'mn' THEN 'Mongolia'
+    WHEN LOWER(${TABLE}."geolocation") = 'me' THEN 'Montenegro'
+    WHEN LOWER(${TABLE}."geolocation") = 'ms' THEN 'Montserrat'
+    WHEN LOWER(${TABLE}."geolocation") = 'ma' THEN 'Morocco'
+    WHEN LOWER(${TABLE}."geolocation") = 'mz' THEN 'Mozambique'
+    WHEN LOWER(${TABLE}."geolocation") = 'mm' THEN 'Myanmar (Burma)'
+    WHEN LOWER(${TABLE}."geolocation") = 'na' THEN 'Namibia'
+    WHEN LOWER(${TABLE}."geolocation") = 'nr' THEN 'Nauru'
+    WHEN LOWER(${TABLE}."geolocation") = 'np' THEN 'Nepal'
+    WHEN LOWER(${TABLE}."geolocation") = 'nl' THEN 'Netherlands'
+    WHEN LOWER(${TABLE}."geolocation") = 'nc' THEN 'New Caledonia'
+    WHEN LOWER(${TABLE}."geolocation") = 'nz' THEN 'New Zealand'
+    WHEN LOWER(${TABLE}."geolocation") = 'ni' THEN 'Nicaragua'
+    WHEN LOWER(${TABLE}."geolocation") = 'ne' THEN 'Niger'
+    WHEN LOWER(${TABLE}."geolocation") = 'ng' THEN 'Nigeria'
+    WHEN LOWER(${TABLE}."geolocation") = 'nu' THEN 'Niue'
+    WHEN LOWER(${TABLE}."geolocation") = 'nf' THEN 'Norfolk Island'
+    WHEN LOWER(${TABLE}."geolocation") = 'mk' THEN 'North Macedonia'
+    WHEN LOWER(${TABLE}."geolocation") = 'macedonia' THEN 'North Macedonia'
+    WHEN LOWER(${TABLE}."geolocation") = 'mp' THEN 'Northern Mariana Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'no' THEN 'Norway'
+    WHEN LOWER(${TABLE}."geolocation") = 'om' THEN 'Oman'
+    WHEN LOWER(${TABLE}."geolocation") = 'pk' THEN 'Pakistan'
+    WHEN LOWER(${TABLE}."geolocation") = 'pw' THEN 'Palau'
+    WHEN LOWER(${TABLE}."geolocation") = 'ps' THEN 'Palestine'
+    WHEN LOWER(${TABLE}."geolocation") = 'pa' THEN 'Panama'
+    WHEN LOWER(${TABLE}."geolocation") = 'pg' THEN 'Papua New Guinea'
+    WHEN LOWER(${TABLE}."geolocation") = 'py' THEN 'Paraguay'
+    WHEN LOWER(${TABLE}."geolocation") = 'pe' THEN 'Peru'
+    WHEN LOWER(${TABLE}."geolocation") = 'ph' THEN 'Philippines'
+    WHEN LOWER(${TABLE}."geolocation") = 'pn' THEN 'Pitcairn'
+    WHEN LOWER(${TABLE}."geolocation") = 'pl' THEN 'Poland'
+    WHEN LOWER(${TABLE}."geolocation") = 'pt' THEN 'Portugal'
+    WHEN LOWER(${TABLE}."geolocation") = 'pr' THEN 'Puerto Rico'
+    WHEN LOWER(${TABLE}."geolocation") = 'qa' THEN 'Qatar'
+    WHEN LOWER(${TABLE}."geolocation") = 're' THEN 'Réunion'
+    WHEN LOWER(${TABLE}."geolocation") = 'ro' THEN 'Romania'
+    WHEN LOWER(${TABLE}."geolocation") = 'ru' THEN 'Russia'
+    WHEN LOWER(${TABLE}."geolocation") = 'rw' THEN 'Rwanda'
+    WHEN LOWER(${TABLE}."geolocation") = 'bl' THEN 'St. Barthélemy'
+    WHEN LOWER(${TABLE}."geolocation") = 'saint barthélemy' THEN 'St. Barthélemy'
+    WHEN LOWER(${TABLE}."geolocation") = 'sh' THEN 'St. Helena'
+    WHEN LOWER(${TABLE}."geolocation") = 'kn' THEN 'St. Kitts & Nevis'
+    WHEN LOWER(${TABLE}."geolocation") = 'lc' THEN 'St. Lucia'
+    WHEN LOWER(${TABLE}."geolocation") = 'saint lucia' THEN 'St. Lucia'
+    WHEN LOWER(${TABLE}."geolocation") = 'mf' THEN 'St. Martin'
+    WHEN LOWER(${TABLE}."geolocation") = 'saint martin' THEN 'St. Martin'
+    WHEN LOWER(${TABLE}."geolocation") = 'pm' THEN 'St. Pierre & Miquelon'
+    WHEN LOWER(${TABLE}."geolocation") = 'vc' THEN 'St. Vincent & Grenadines'
+    WHEN LOWER(${TABLE}."geolocation") = 'ws' THEN 'Samoa'
+    WHEN LOWER(${TABLE}."geolocation") = 'sm' THEN 'San Marino'
+    WHEN LOWER(${TABLE}."geolocation") = 'st' THEN 'Sao Tome & Principe'
+    WHEN LOWER(${TABLE}."geolocation") = 'sa' THEN 'Saudi Arabia'
+    WHEN LOWER(${TABLE}."geolocation") = 'sn' THEN 'Senegal'
+    WHEN LOWER(${TABLE}."geolocation") = 'rs' THEN 'Serbia'
+    WHEN LOWER(${TABLE}."geolocation") = 'sc' THEN 'Seychelles'
+    WHEN LOWER(${TABLE}."geolocation") = 'sl' THEN 'Sierra Leone'
+    WHEN LOWER(${TABLE}."geolocation") = 'sg' THEN 'Singapore'
+    WHEN LOWER(${TABLE}."geolocation") = 'sx' THEN 'Sint Maarten'
+    WHEN LOWER(${TABLE}."geolocation") = 'sk' THEN 'Slovakia'
+    WHEN LOWER(${TABLE}."geolocation") = 'si' THEN 'Slovenia'
+    WHEN LOWER(${TABLE}."geolocation") = 'sb' THEN 'Solomon Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'so' THEN 'Somalia'
+    WHEN LOWER(${TABLE}."geolocation") = 'za' THEN 'South Africa'
+    WHEN LOWER(${TABLE}."geolocation") = 'gs' THEN 'South Georgia & the South Sandwich Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'ss' THEN 'South Sudan'
+    WHEN LOWER(${TABLE}."geolocation") = 'es' THEN 'Spain'
+    WHEN LOWER(${TABLE}."geolocation") = 'lk' THEN 'Sri Lanka'
+    WHEN LOWER(${TABLE}."geolocation") = 'sd' THEN 'Sudan'
+    WHEN LOWER(${TABLE}."geolocation") = 'sr' THEN 'Suriname'
+    WHEN LOWER(${TABLE}."geolocation") = 'sj' THEN 'Svalbard & Jan Mayen'
+    WHEN LOWER(${TABLE}."geolocation") = 'se' THEN 'Sweden'
+    WHEN LOWER(${TABLE}."geolocation") = 'ch' THEN 'Switzerland'
+    WHEN LOWER(${TABLE}."geolocation") = 'sy' THEN 'Syria'
+    WHEN LOWER(${TABLE}."geolocation") = 'tw' THEN 'Taiwan'
+    WHEN LOWER(${TABLE}."geolocation") = 'tj' THEN 'Tajikistan'
+    WHEN LOWER(${TABLE}."geolocation") = 'tz' THEN 'Tanzania'
+    WHEN LOWER(${TABLE}."geolocation") = 'th' THEN 'Thailand'
+    WHEN LOWER(${TABLE}."geolocation") = 'tl' THEN 'Timor-Leste'
+    WHEN LOWER(${TABLE}."geolocation") = 'tg' THEN 'Togo'
+    WHEN LOWER(${TABLE}."geolocation") = 'tk' THEN 'Tokelau'
+    WHEN LOWER(${TABLE}."geolocation") = 'to' THEN 'Tonga'
+    WHEN LOWER(${TABLE}."geolocation") = 'tt' THEN 'Trinidad & Tobago'
+    WHEN LOWER(${TABLE}."geolocation") = 'trinidad and tobago' THEN 'Trinidad & Tobago'
+    WHEN LOWER(${TABLE}."geolocation") = 'tn' THEN 'Tunisia'
+    WHEN LOWER(${TABLE}."geolocation") = 'tr' THEN 'Turkey'
+    WHEN LOWER(${TABLE}."geolocation") = 'tm' THEN 'Turkmenistan'
+    WHEN LOWER(${TABLE}."geolocation") = 'tc' THEN 'Turks & Caicos Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'tv' THEN 'Tuvalu'
+    WHEN LOWER(${TABLE}."geolocation") = 'ug' THEN 'Uganda'
+    WHEN LOWER(${TABLE}."geolocation") = 'ua' THEN 'Ukraine'
+    WHEN LOWER(${TABLE}."geolocation") = 'ae' THEN 'United Arab Emirates'
+    WHEN LOWER(${TABLE}."geolocation") = 'gb' THEN 'United Kingdom'
+    WHEN LOWER(${TABLE}."geolocation") = 'us' THEN 'United States'
+    WHEN LOWER(${TABLE}."geolocation") = 'um' THEN 'United States Minor Outlying Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'uy' THEN 'Uruguay'
+    WHEN LOWER(${TABLE}."geolocation") = 'uz' THEN 'Uzbekistan'
+    WHEN LOWER(${TABLE}."geolocation") = 'vu' THEN 'Vanuatu'
+    WHEN LOWER(${TABLE}."geolocation") = 've' THEN 'Venezuela'
+    WHEN LOWER(${TABLE}."geolocation") = 'vn' THEN 'Vietnam'
+    WHEN LOWER(${TABLE}."geolocation") = 'vg' THEN 'U.S. Virgin Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'vi' THEN 'British Virgin Islands'
+    WHEN LOWER(${TABLE}."geolocation") = 'wf' THEN 'Wallis & Futuna'
+    WHEN LOWER(${TABLE}."geolocation") = 'eh' THEN 'Western Sahara'
+    WHEN LOWER(${TABLE}."geolocation") = 'ye' THEN 'Yemen'
+    WHEN LOWER(${TABLE}."geolocation") = 'zm' THEN 'Zambia'
+    WHEN LOWER(${TABLE}."geolocation") = 'zw' THEN 'Zimbabwe'
+    ELSE ${TABLE}."geolocation"
+    END ;;
   }
 
   dimension: operating_system {
     type: string
-    sql: ${TABLE}."operating_system" ;;
+    sql:CASE
+        WHEN LOWER(${TABLE}."operating_system" ) LIKE '%android%' THEN 'Android'
+        WHEN LOWER(${TABLE}."operating_system" ) LIKE '%ios%' THEN 'iOS'
+        ELSE 'Other'
+    END ;;
   }
 
-  dimension: password {
-    type: string
-    sql: ${TABLE}."password" ;;
-  }
-
-  dimension_group: password_last_change {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."password_last_change" ;;
-  }
   measure: count {
     type: count
-    drill_fields: [id, first_name, last_name]
+    drill_fields: [id]
   }
 }
