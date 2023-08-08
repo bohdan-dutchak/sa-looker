@@ -45,11 +45,6 @@ view: routines_facescananalytics {
     sql: ${TABLE}."hydration" ;;
   }
 
-  dimension: is_valid {
-    type: yesno
-    sql: ${TABLE}."is_valid" ;;
-  }
-
   dimension: lines {
     type: number
     sql: ${TABLE}."lines" ;;
@@ -70,11 +65,6 @@ view: routines_facescananalytics {
     sql: ${TABLE}."quality" ;;
   }
 
-  dimension: raw_data {
-    type: string
-    sql: ${TABLE}."raw_data" ;;
-  }
-
   dimension: redness {
     type: number
     sql: ${TABLE}."redness" ;;
@@ -93,12 +83,6 @@ view: routines_facescananalytics {
   dimension: uniformness {
     type: number
     sql: ${TABLE}."uniformness" ;;
-  }
-
-  dimension_group: updated {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."updated_at" ;;
   }
 
   dimension: wrinkles {

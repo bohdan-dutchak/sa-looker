@@ -25,27 +25,6 @@ view: routines_facescan {
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Haut Ai Batch ID" in Explore.
 
-  dimension: haut_ai_batch_id {
-    type: string
-    sql: ${TABLE}."haut_ai_batch_id" ;;
-  }
-
-  dimension: haut_ai_image_id {
-    type: string
-    sql: ${TABLE}."haut_ai_image_id" ;;
-  }
-
-  dimension: image {
-    type: string
-    sql: ${TABLE}."image" ;;
-  }
-
-  dimension_group: updated {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."updated_at" ;;
-  }
-
   dimension: user_id {
     type: number
     sql: ${TABLE}."user_id" ;;

@@ -45,9 +45,9 @@ view: routines_dailyquestionnaire {
     sql: ${TABLE}."hours_of_sleep" ;;
   }
 
-  dimension: life_happened {
+  dimension: coffee {
     type: string
-    sql: ${TABLE}."life_happened" ;;
+    sql: CASE WHEN 'COFFEE' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO';;
   }
 
   dimension: skin_feel {
@@ -68,12 +68,6 @@ view: routines_dailyquestionnaire {
   dimension: stress_levels {
     type: string
     sql: ${TABLE}."stress_levels" ;;
-  }
-
-  dimension_group: updated {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."updated_at" ;;
   }
 
   dimension: user_id {
