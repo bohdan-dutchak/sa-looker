@@ -47,7 +47,7 @@ view: routines_dailyquestionnaire {
 
   dimension: coffee {
     type: string
-    sql: CASE WHEN 'COFFEE' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO';;
+    sql: CASE WHEN 'COFFEE' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
   }
 
   dimension: skin_feel {
