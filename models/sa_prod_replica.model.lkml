@@ -36,7 +36,6 @@ persist_with: sa_prod_replica_default_datagroup
 #   }
 # }
 
-explore: facescans {}
 
 explore: users_user {
   label: "Joined_data"
@@ -51,6 +50,12 @@ explore: users_user {
     type: left_outer
     relationship: one_to_many
     sql_on: ${users_user.id}=${facescans.user_id} ;;
+  }
+
+  join: products {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${users_user.id}=${products.user_id} ;;
   }
 
   # join: routines_dailyproductgroup {
