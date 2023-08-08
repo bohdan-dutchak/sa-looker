@@ -17,13 +17,6 @@ view: routines_dailyproductgroup {
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Country" in Explore.
 
-  dimension: country {
-    type: string
-    map_layer_name: countries
-    sql: ${TABLE}."country" ;;
-  }
-  # Dates and timestamps can be represented in Looker using a dimension group of type: time.
-  # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
   dimension_group: created {
     type: time
@@ -31,16 +24,11 @@ view: routines_dailyproductgroup {
     sql: ${TABLE}."created_at" ;;
   }
 
-  dimension_group: updated {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."updated_at" ;;
-  }
-
   dimension: user_id {
     type: number
     sql: ${TABLE}."user_id" ;;
   }
+
   measure: count {
     type: count
     drill_fields: [id]

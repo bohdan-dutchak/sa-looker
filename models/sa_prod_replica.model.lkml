@@ -37,7 +37,4 @@ explore: routines_facescan {}
 
 explore: routines_facescananalytics {}
 
-explore: routines_healthcareevent {}
-
 explore: users_user {}
-
