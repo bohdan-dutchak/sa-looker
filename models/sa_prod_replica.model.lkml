@@ -8,7 +8,7 @@ include: "/views/**/*.view.lkml"
 # use the Quick Help panel on the right to see documentation.
 
 datagroup: sa_prod_replica_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 
@@ -25,16 +25,31 @@ persist_with: sa_prod_replica_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
-explore: questionnaire_userquestionnaire {}
 
-explore: routines_dailyproduct {}
+explore: routines_dailyproductgroup {
+  label: "Products"
 
-explore: routines_dailyproductgroup {}
+  join: routines_dailyproduct{
+    type: inner
+    relationship: one_to_many
+    sql_on: ${routines_dailyproductgroup.id}=${routines_dailyproduct.group_id} ;;
+  }
+}
 
-explore: routines_dailyquestionnaire {}
 
-explore: routines_facescan {}
+explore: users_user {
+  label: "Joined_data"
 
-explore: routines_facescananalytics {}
+  join: questionnaire_userquestionnaire {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${users_user.id}=${questionnaire_userquestionnaire.user_id} ;;
+  }
 
-explore: users_user {}
+  join: routines_dailyproductgroup {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${users_user.id}=${routines_dailyproductgroup.user_id} ;;
+  }
+
+}
