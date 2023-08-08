@@ -50,6 +50,21 @@ view: routines_dailyquestionnaire {
     sql: CASE WHEN 'COFFEE' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
   }
 
+  dimension: junk_food {
+    type: string
+    sql: CASE WHEN 'JUNK_FOOD_AND_SWEETS' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+  }
+
+  dimension: smoking {
+    type: string
+    sql: CASE WHEN 'SMOKING' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+  }
+
+  dimension: alcohol {
+    type: string
+    sql: CASE WHEN 'ALCOHOL' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+  }
+
   dimension: skin_feel {
     type: string
     sql: ${TABLE}."skin_feel" ;;
@@ -79,6 +94,7 @@ view: routines_dailyquestionnaire {
     type: number
     sql: ${TABLE}."water" ;;
   }
+
   measure: count {
     type: count
     drill_fields: [id]

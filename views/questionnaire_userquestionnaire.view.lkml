@@ -57,17 +57,24 @@ view: questionnaire_userquestionnaire {
 
   dimension: exercise_days_a_week {
     type: string
-    sql: ${TABLE}."exercise_days_a_week" ;;
+    sql:
+        CASE
+        WHEN ${TABLE}."exercise_days_a_week" = 'ZERO' THEN 'NO_EXERCISE'
+        WHEN ${TABLE}."exercise_days_a_week" IN ('ONE', 'TWO', 'THREE') THEN 'ONE_THREE'
+        WHEN ${TABLE}."exercise_days_a_week" IN ('FOUR', 'FIVE') THEN 'FOUR_FIVE'
+        WHEN ${TABLE}."exercise_days_a_week" = 'SIX_PLUS' THEN 'EVERY_DAY'
+        ELSE ${TABLE}."exercise_days_a_week"
+    END;;
   }
 
   dimension: expectations {
     type: string
-    sql: ${TABLE}."expectations" ;;
+    sql: CASE WHEN ${TABLE}."expectations" = '' THEN 'SKIPPED' ELSE ${TABLE}."expectations" END;;
   }
 
   dimension: feeling_today {
     type: string
-    sql: ${TABLE}."feeling_today" ;;
+    sql: CASE WHEN ${TABLE}."feeling_today" = '' THEN 'SKIPPED' ELSE ${TABLE}."feeling_today" END;;
   }
 
   dimension_group: female_power {
@@ -83,19 +90,37 @@ view: questionnaire_userquestionnaire {
     sql: ${TABLE}."gender" ;;
   }
 
-  dimension: guilty_pleasures {
+  dimension: coffee {
     type: string
-    sql: ${TABLE}."guilty_pleasures" ;;
+    sql: CASE WHEN 'COFFEE' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+  }
+
+  dimension: junk_food {
+    type: string
+    sql: CASE WHEN 'JUNK_FOOD_AND_SWEETS' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+  }
+
+  dimension: smoking {
+    type: string
+    sql: CASE WHEN 'SMOKING' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+  }
+
+  dimension: alcohol {
+    type: string
+    sql: CASE WHEN 'ALCOHOL' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
   }
 
   dimension: hours_of_sleep {
     type: string
-    sql: ${TABLE}."hours_of_sleep" ;;
-  }
-
-  dimension: is_logging_menstruation {
-    type: yesno
-    sql: ${TABLE}."is_logging_menstruation" ;;
+    sql:
+        CASE
+          WHEN hours_of_sleep IN ('0', '1', '2', '3', '4') THEN 'ZERO_FOUR'
+          WHEN hours_of_sleep IN ('5','6') THEN 'FIVE_SIX'
+          WHEN hours_of_sleep IN ('7','8') THEN 'SEVEN_EIGHT'
+          WHEN hours_of_sleep IN ('9','10','11','12','13','14') THEN 'NINE_PLUS'
+          WHEN hours_of_sleep = '' THEN 'SKIPPED'
+          ELSE hours_of_sleep
+        END;;
   }
 
   dimension: make_up {
@@ -110,22 +135,17 @@ view: questionnaire_userquestionnaire {
 
   dimension: skin_feel {
     type: string
-    sql: ${TABLE}."skin_feel" ;;
+    sql: CASE WHEN ${TABLE}."skin_feel" = '' THEN 'SKIPPED' ELSE ${TABLE}."skin_feel" END;;
   }
 
   dimension: skin_goal {
     type: string
-    sql: ${TABLE}."skin_goal" ;;
+    sql: CASE WHEN ${TABLE}."skin_goal" = '' THEN 'SKIPPED' ELSE ${TABLE}."skin_goal" END;;
   }
 
   dimension: skin_type {
     type: string
-    sql: ${TABLE}."skin_type" ;;
-  }
-
-  dimension: smoking_preferences {
-    type: string
-    sql: ${TABLE}."smoking_preferences" ;;
+    sql: CASE WHEN ${TABLE}."skin_type" = '' THEN 'SKIPPED' ELSE ${TABLE}."skin_type" END;;
   }
 
   dimension_group: stopped_birth_control {
@@ -134,12 +154,6 @@ view: questionnaire_userquestionnaire {
     convert_tz: no
     datatype: date
     sql: ${TABLE}."stopped_birth_control_date" ;;
-  }
-
-  dimension_group: updated {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."updated_at" ;;
   }
 
   dimension: user_id {
