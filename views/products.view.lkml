@@ -109,7 +109,7 @@ view: products {
                        ELSE brand
               END as brand
       FROM routines_dailyproduct
-      --WHERE image != '';;
+      ;;
   }
   drill_fields: [id]
 
