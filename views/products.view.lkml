@@ -7,7 +7,7 @@ view: products {
              type,
              is_medication,
              product_info_id,
-             user_id,
+             group_id,
              CASE
                        WHEN LOWER(brand) LIKE 'aa%' THEN 'AA'
                        WHEN brand IN ('ACO ') THEN 'ACO'
@@ -109,7 +109,6 @@ view: products {
                        ELSE brand
               END as brand
       FROM routines_dailyproduct
-      INNER JOIN routines_dailyproductgroup rd on routines_dailyproduct.group_id = rd.id
       WHERE image != '';;
   }
   drill_fields: [id]
@@ -118,11 +117,6 @@ view: products {
     primary_key: yes
     type: number
     sql: ${TABLE}."id" ;;
-  }
-
-  dimension: user_id {
-    type: number
-    sql: ${TABLE}."user_id" ;;
   }
 
   dimension: product_info_id {
@@ -153,6 +147,11 @@ view: products {
   dimension: type {
     type: string
     sql: ${TABLE}."type" ;;
+  }
+
+  dimension: group_id {
+    type: string
+    sql: ${TABLE}."group_id" ;;
   }
 
   measure: count {

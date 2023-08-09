@@ -44,10 +44,16 @@ explore: users_user {
     sql_on: ${users_user.id}=${facescans.user_id} ;;
   }
 
-  join: products {
+  join: product_group {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${users_user.id}=${products.user_id} ;;
+    sql_on: ${users_user.id}=${product_group.user_id} ;;
+  }
+
+  join: products {
+    type: inner
+    relationship: many_to_many
+    sql_on: ${products.group_id} = ${product_group.id} ;;
   }
 
   join: routines_dailyquestionnaire {
