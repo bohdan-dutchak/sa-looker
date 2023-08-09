@@ -28,8 +28,6 @@ persist_with: sa_prod_replica_default_datagroup
 
 explore: avg_facescans {}
 
-explore: routines_dailyquestionnaire {}
-
 explore: users_user {
   label: "Joined_data"
 
@@ -49,5 +47,11 @@ explore: users_user {
     type: left_outer
     relationship: one_to_many
     sql_on: ${users_user.id}=${products.user_id} ;;
+  }
+
+  join: routines_dailyquestionnaire {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${users_user.id}=${routines_dailyquestionnaire.user_id} ;;
   }
 }

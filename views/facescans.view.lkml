@@ -90,4 +90,11 @@ view: facescans {
     type: count
     drill_fields: [face_scan_id]
   }
+
+  measure: avg_acne {
+    type: number
+    sql:
+    SELECT AVG(acne)
+    FROM public.routines_facescananalytics ;;
+  }
 }
