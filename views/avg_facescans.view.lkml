@@ -2,17 +2,17 @@ view: avg_facescans {
   derived_table: {
     sql:
       SELECT
-         AVG(acne),
-         AVG(lines),
-         AVG(pigmentation),
-         AVG(translucency),
-         AVG(quality),
-         AVG(eye_bags),
-         AVG(pores),
-         AVG(sagging),
-         AVG(uniformness),
-         AVG(hydration),
-         AVG(redness)
+         AVG(acne) AS acne,
+         AVG(lines) AS lines,
+         AVG(pigmentation) AS pigmentation,
+         AVG(translucency) AS translucency,
+         AVG(quality) AS quality,
+         AVG(eye_bags) AS eye_bags,
+         AVG(pores) AS pores,
+         AVG(sagging) AS sagging,
+         AVG(uniformness) AS uniformness,
+         AVG(hydration) AS hydration,
+         AVG(redness) AS redness
       FROM routines_facescananalytics;;
   }
 
