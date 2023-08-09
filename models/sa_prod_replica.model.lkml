@@ -26,6 +26,8 @@ persist_with: sa_prod_replica_default_datagroup
 # Each joined view also needs to define a primary key.
 
 
+explore: avg_facescans {}
+
 explore: routines_dailyquestionnaire {}
 
 explore: users_user {
