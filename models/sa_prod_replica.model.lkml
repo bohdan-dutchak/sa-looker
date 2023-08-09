@@ -51,7 +51,7 @@ explore: users_user {
   }
 
   join: products {
-    type: inner
+    type: left_outer
     relationship: many_to_many
     sql_on: ${products.group_id} = ${product_group.id} ;;
   }
