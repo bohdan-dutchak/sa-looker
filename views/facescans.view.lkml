@@ -91,8 +91,4 @@ view: facescans {
     drill_fields: [face_scan_id]
   }
 
-  measure: avg_acne {
-    type: number
-    sql: AVG(acne);;
-  }
 }
