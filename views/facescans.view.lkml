@@ -93,8 +93,6 @@ view: facescans {
 
   measure: avg_acne {
     type: number
-    sql:
-    SELECT AVG(acne)
-    FROM public.routines_facescananalytics ;;
+    sql: AVG(acne);;
   }
 }
