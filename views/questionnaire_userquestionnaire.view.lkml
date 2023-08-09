@@ -19,7 +19,21 @@ view: questionnaire_userquestionnaire {
 
   dimension: age {
     type: string
-    sql: ${TABLE}."age" ;;
+    sql:
+        CASE
+        WHEN ${TABLE}."age" LIKE '%57%' THEN '57-61'
+        WHEN ${TABLE}."age" LIKE '%22%' THEN '22-26'
+        WHEN ${TABLE}."age" LIKE '%47%' THEN '47-51'
+        WHEN ${TABLE}."age" LIKE '%27%' THEN '27-31'
+        WHEN ${TABLE}."age" LIKE '%17%' THEN '17-21'
+        WHEN ${TABLE}."age" LIKE '%37%' THEN '37-41'
+        WHEN ${TABLE}."age" LIKE '%52%' THEN '52-56'
+        WHEN ${TABLE}."age" LIKE '%12%' THEN '12-16'
+        WHEN ${TABLE}."age" LIKE '%61%' THEN '61+'
+        WHEN ${TABLE}."age" LIKE '%32%' THEN '32-36'
+        WHEN ${TABLE}."age" LIKE '%42%' THEN '42-46'
+        ELSE ''
+    END;;
   }
 
   dimension: contraceptive_pill {

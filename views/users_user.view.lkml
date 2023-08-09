@@ -295,7 +295,8 @@ view: users_user {
     sql:CASE
         WHEN LOWER(${TABLE}."operating_system" ) LIKE '%android%' THEN 'Android'
         WHEN LOWER(${TABLE}."operating_system" ) LIKE '%ios%' THEN 'iOS'
-        ELSE 'Other'
+        WHEN LOWER(${TABLE}."operating_system" ) != '' THEN 'Other'
+        ELSE ''
     END ;;
   }
 
