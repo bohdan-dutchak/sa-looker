@@ -106,22 +106,22 @@ view: questionnaire_userquestionnaire {
 
   dimension: coffee {
     type: string
-    sql: CASE WHEN 'COFFEE' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+    sql: CASE WHEN 'COFFEE' = ANY(${TABLE}."guilty_pleasures") THEN 'YES' ELSE 'NO' END;;
   }
 
   dimension: junk_food {
     type: string
-    sql: CASE WHEN 'JUNK_FOOD_AND_SWEETS' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+    sql: CASE WHEN 'JUNK_FOOD_AND_SWEETS' = ANY(${TABLE}."guilty_pleasures") THEN 'YES' ELSE 'NO' END;;
   }
 
   dimension: smoking {
     type: string
-    sql: CASE WHEN 'SMOKING' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+    sql: CASE WHEN 'SMOKING' = ANY(${TABLE}."guilty_pleasures") THEN 'YES' ELSE 'NO' END;;
   }
 
   dimension: alcohol {
     type: string
-    sql: CASE WHEN 'ALCOHOL' = ANY(${TABLE}."life_happened") THEN 'YES' ELSE 'NO' END;;
+    sql: CASE WHEN 'ALCOHOL' = ANY(${TABLE}."guilty_pleasures") THEN 'YES' ELSE 'NO' END;;
   }
 
   dimension: hours_of_sleep {
