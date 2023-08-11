@@ -267,7 +267,7 @@ view: users_user {
                 ELSE geolocation
                 END AS geolocation,
             CASE
-                WHEN LOWER(operating_systeь) LIKE '%android%' THEN 'Android'
+                WHEN LOWER(operating_system) LIKE '%android%' THEN 'Android'
                 WHEN LOWER(operating_system) LIKE '%ios%' THEN 'iOS'
                 WHEN LOWER(operating_system) != '' THEN 'Other'
                 ELSE ''
