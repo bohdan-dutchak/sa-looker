@@ -27,7 +27,6 @@ view: users_user {
     type: string
     map_layer_name: countries
         sql: CASE
-
     WHEN LOWER(${TABLE}."geolocation") = 'xk' THEN 'Kosovo'
     WHEN LOWER(${TABLE}."geolocation") = 'af' THEN 'Afghanistan'
     WHEN LOWER(${TABLE}."geolocation") = 'ax' THEN 'Åland Islands'

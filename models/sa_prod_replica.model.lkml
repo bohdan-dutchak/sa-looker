@@ -38,12 +38,6 @@ explore: users_user {
     sql_on: ${users_user.id}=${questionnaire_userquestionnaire.user_id} ;;
   }
 
-  join: facescans{
-    type: left_outer
-    relationship: one_to_many
-    sql_on: ${users_user.id}=${facescans.user_id} ;;
-  }
-
   join: product_group {
     type: left_outer
     relationship: one_to_many
@@ -52,13 +46,19 @@ explore: users_user {
 
   join: products {
     type: left_outer
-    relationship: one_to_many
+    relationship: many_to_many
     sql_on: ${products.group_id} = ${product_group.id} ;;
+  }
+
+  join: facescans{
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${users_user.id}=${facescans.user_id} ;;
   }
 
   join: routines_dailyquestionnaire {
     type: left_outer
-    relationship: one_to_many
+    relationship: many_to_many
     sql_on: ${users_user.id}=${routines_dailyquestionnaire.user_id} ;;
   }
 }
