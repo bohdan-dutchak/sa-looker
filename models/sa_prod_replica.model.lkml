@@ -30,11 +30,11 @@ persist_with: sa_prod_replica_default_datagroup
 explore: users_user {
   label: "Joined_data"
 
-  join: questionnaire_userquestionnaire {
-    type: left_outer
-    relationship: one_to_one
-    sql_on: ${users_user.id}=${questionnaire_userquestionnaire.user_id} ;;
-  }
+  # join: questionnaire_userquestionnaire {
+  #   type: left_outer
+  #   relationship: one_to_one
+  #   sql_on: ${users_user.id}=${questionnaire_userquestionnaire.user_id} ;;
+  # }
 
   # join: product_group {
   #   type: left_outer
