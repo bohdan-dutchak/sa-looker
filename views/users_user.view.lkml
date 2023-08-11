@@ -286,6 +286,7 @@ view: users_user {
     WHEN LOWER(${TABLE}."geolocation") = 'ye' THEN 'Yemen'
     WHEN LOWER(${TABLE}."geolocation") = 'zm' THEN 'Zambia'
     WHEN LOWER(${TABLE}."geolocation") = 'zw' THEN 'Zimbabwe'
+    WHEN LOWER(${TABLE}."geolocation") = '--' THEN 'Germany'
     ELSE ${TABLE}."geolocation"
     END ;;
   }
@@ -299,6 +300,7 @@ view: users_user {
         ELSE ''
     END ;;
   }
+
 
   measure: count {
     type: count
