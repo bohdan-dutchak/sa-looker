@@ -25,9 +25,14 @@ persist_with: sa_prod_replica_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
+datagroup: dg {
+  max_cache_age: "24 hours"
+  interval_trigger: "24 hours"
+}
 
 
 explore: users_user {
+  persist_with: dg
   label: "Joined_data"
 
   join: questionnaire_userquestionnaire {
