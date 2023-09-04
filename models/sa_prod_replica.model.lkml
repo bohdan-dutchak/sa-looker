@@ -64,4 +64,10 @@ explore: users_user {
     relationship: many_to_many
     sql_on: ${users_user.id}=${routines_dailyquestionnaire.user_id} ;;
   }
+
+  join: geodata {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${users_user.geolocation}=${geodata.alpha} ;;
+  }
 }
