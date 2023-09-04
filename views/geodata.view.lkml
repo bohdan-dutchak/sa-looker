@@ -502,7 +502,6 @@ UNION ALL
 SELECT 'WF', 'Wallis and Futuna'
 UNION ALL
 SELECT 'EH', 'Western Sahara'
-UNION ALL
 ;;
   }
 
