@@ -269,7 +269,7 @@ SELECT 'PG', 'Papua New Guinea'
 UNION ALL
 SELECT 'AZ', 'Azerbaijan'
 UNION ALL
-SELECT 'BO', 'Bolivia (Plurinational State of)'
+SELECT 'BO', 'Bolivia'
 UNION ALL
 SELECT 'SN', 'Senegal'
 UNION ALL
@@ -337,7 +337,7 @@ SELECT 'CN', 'China'
 UNION ALL
 SELECT 'JM', 'Jamaica'
 UNION ALL
-SELECT 'IR', 'Iran (Islamic Republic of)'
+SELECT 'IR', 'Iran'
 UNION ALL
 SELECT 'GM', 'Gambia'
 UNION ALL
@@ -481,7 +481,7 @@ SELECT 'SD', 'Sudan'
 UNION ALL
 SELECT 'SJ', 'Svalbard and Jan Mayen'
 UNION ALL
-SELECT 'SY', 'Syrian Arab Republic'
+SELECT 'SY', 'Syria'
 UNION ALL
 SELECT 'TJ', 'Tajikistan'
 UNION ALL
