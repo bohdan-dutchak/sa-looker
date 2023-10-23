@@ -1,7 +1,7 @@
 view: mashup {
  derived_table: {
    sql:
-    SELECT rdp1.brand, rdp2.brand, COUNT(*)
+    SELECT rdp1.brand, rdp2.brand, COUNT(*) AS cnt
     FROM routines_dailyproduct rdp1
              iNNER JOIN routines_dailyproduct rdp2 ON rdp1.group_id = rdp2.group_id
     GROUP BY 1, 2
@@ -15,17 +15,17 @@ view: mashup {
 
   dimension: Brand1 {
     type: string
-    sql: ${TABLE}${rdp1.brand} ;;
+    sql: ${TABLE}."rdp1.brand" ;;
   }
 
   dimension: Brand2 {
     type: string
-    sql: ${TABLE}${rdp2.brand} ;;
+    sql: ${TABLE}."rdp2.brand" ;;
   }
 
   dimension: Count {
     type: number
-    sql: ${TABLE}${Count} ;;
+    sql: ${TABLE}."cnt" ;;
   }
 
 }
