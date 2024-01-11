@@ -70,6 +70,8 @@ explore: users_user {
     relationship: many_to_one
     sql_on: ${users_user.geolocation}=${geodata.alpha} ;;
   }
+
+
 }
 
 explore: mashup {
