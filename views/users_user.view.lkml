@@ -2013,7 +2013,7 @@ UNION ALL
                 ELSE 'Other'
                 END AS operating_system,
             CASE
-                WHEN LOWER(device) LIKE '%samsung%' THEN 'Samsung'
+                WHEN LOWER(device) LIKE '%samsung%' OR LOWER(device) LIKE 'sm-%' THEN 'Samsung'
                 ELSE 'Other'
                 END AS device
       FROM users_user
