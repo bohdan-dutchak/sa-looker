@@ -8,7 +8,7 @@ view: users_user {
             CASE
                 WHEN LOWER(operating_system) LIKE '%android%' THEN 'Android'
                 WHEN LOWER(operating_system) LIKE '%ios%' THEN 'iOS'
-                WHEN LOWER(operating_system) != '' THEN 'Other'
+                WHEN LOWER(operating_system) != '' THEN ''
                 ELSE 'Other'
                 END AS operating_system,
             CASE
