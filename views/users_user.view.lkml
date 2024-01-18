@@ -52,4 +52,16 @@ view: users_user {
     type: count
     drill_fields: [id]
   }
+
+  measure: total_users {
+    type: count_distinct
+    sql: ${TABLE}.user_id ;;
+  }
+
+
+  measure: percentage_users {
+    type: number
+    sql: ${count} / NULLIF(${total_users}, 0) * 100 ;;
+    value_format_name: percent_1
+  }
 }

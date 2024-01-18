@@ -71,7 +71,6 @@ explore: users_user {
     sql_on: ${users_user.geolocation}=${geodata.alpha} ;;
   }
 
-
 }
 
 explore: mashup {
