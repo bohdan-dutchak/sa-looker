@@ -55,7 +55,7 @@ view: users_user {
 
   measure: total_users {
     type: count_distinct
-    sql: ${TABLE}.user_id ;;
+    sql: ${TABLE}.id ;;
   }
 
 
