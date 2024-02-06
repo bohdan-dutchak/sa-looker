@@ -36,7 +36,7 @@ view: products {
                        WHEN LOWER(brand) LIKE 'bielenda%' THEN 'Bielenda'
                        WHEN LOWER(brand) LIKE 'biotrade%' THEN 'Biotrade'
                        WHEN LOWER(brand) LIKE 'byoma%' THEN 'Byoma'
-                       WHEN brand IN ('Cera Ve', 'CeraVe', 'Cerave ', 'cera ve ', 'Cerave ', 'cera e and dermalogica') THEN 'CeraVe'
+                       WHEN LOWER(brand) LIKE '%cera%' AND LOWER(brand) NOT IN ('ceramide', 'ceramol', 'cera di cupra') THEN 'CeraVe'
                        WHEN brand IN ('Cien', 'Cien nature', 'cien ') THEN 'Cien'
                        WHEN brand IN ('Clean & Clear', 'Clean and Clear') THEN 'Clean & Clear'
                        WHEN brand IN ('clinique ', 'CLINIQUE ', 'CLINIQUE for men ') THEN 'Clinique'

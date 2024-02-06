@@ -8,7 +8,7 @@ view: users_user {
             CASE
                 WHEN LOWER(operating_system) LIKE '%android%' THEN 'Android'
                 WHEN LOWER(operating_system) LIKE '%ios%' THEN 'iOS'
-                WHEN LOWER(operating_system) != '' THEN ''
+                WHEN LOWER(operating_system) LIKE '' THEN ''
                 ELSE 'Other'
                 END AS operating_system,
             CASE
@@ -51,17 +51,5 @@ view: users_user {
   measure: count {
     type: count
     drill_fields: [id]
-  }
-
-  measure: total_users {
-    type: count_distinct
-    sql: ${TABLE}.id ;;
-  }
-
-
-  measure: percentage_users {
-    type: number
-    sql: ${count} / NULLIF(${total_users}, 0) * 100 ;;
-    value_format_name: percent_1
   }
 }
