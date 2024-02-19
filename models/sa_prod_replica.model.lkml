@@ -71,6 +71,12 @@ explore: users_user {
     sql_on: ${users_user.geolocation}=${geodata.alpha} ;;
   }
 
+  join: cha_gpt_messages{
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${users_user.id}=${cha_gpt_messages.user_id};;
+  }
+
 }
 
 explore: mashup {
