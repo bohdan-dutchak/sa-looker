@@ -119,6 +119,12 @@ view: products {
     sql: ${TABLE}."id" ;;
   }
 
+  dimension_group: created_at {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: ${TABLE}."created_at" ;;
+  }
+
   dimension: product_info_id {
     type: number
     sql: ${TABLE}."product_info_id" ;;
