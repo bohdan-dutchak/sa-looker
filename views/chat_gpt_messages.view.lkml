@@ -3,7 +3,7 @@ view: chat_gpt_messages {
     sql:
           SELECT id,
             created_at,
-            message
+            message,
             user_id,
             category
 
