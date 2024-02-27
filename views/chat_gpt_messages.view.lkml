@@ -1,4 +1,4 @@
-view: cha_gpt_messages {
+view: chat_gpt_messages {
   derived_table: {
     sql:
           SELECT id,
