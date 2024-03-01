@@ -77,6 +77,12 @@ explore: users_user {
     sql_on: ${users_user.id} = CAST(${chat_gpt_messages.user_id} AS INTEGER);;
   }
 
+  join: user_count {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${users_user.id}=${user_count.id} ;;
+  }
+
 }
 
 explore: mashup {
