@@ -178,4 +178,10 @@ view: questionnaire_userquestionnaire {
     type: count
     drill_fields: [id]
   }
+
+
+  measure: cumulative_users {
+    type: running_total
+    sql: ${count} ;;
+  }
 }

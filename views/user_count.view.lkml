@@ -25,7 +25,7 @@ view: user_count {
 
   measure: cumulative_users {
     type: running_total
-    sql: ${id} ;;
+    sql: ${count_users} ;;
   }
 
 }
