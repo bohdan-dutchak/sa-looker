@@ -2,6 +2,7 @@ view: products {
   derived_table: {
     sql:
       SELECT routines_dailyproduct.id,
+             created_at,
              name,
              ingredients,
              type,
