@@ -174,7 +174,7 @@ view: questionnaire_userquestionnaire {
     type: number
     sql: ${TABLE}."user_id" ;;
   }
-  measure: count_users {
+  measure: count{
     type: count
     drill_fields: [id]
   }
@@ -182,6 +182,6 @@ view: questionnaire_userquestionnaire {
 
   measure: cumulative_users {
     type: running_total
-    sql: ${count_users} ;;
+    sql: ${count} ;;
   }
 }
