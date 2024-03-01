@@ -24,7 +24,7 @@ view: user_count {
   }
 
   measure: cumulative_users {
-    type: count_distinct
+    type: running_total
     sql: ${id} ;;
   }
 
