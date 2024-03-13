@@ -19,11 +19,10 @@ view: routines_dailyquestionnaire {
                         WHEN EXTRACT(MONTH FROM created_at) IN (3, 4, 5) THEN 'Spring'
                         WHEN EXTRACT(MONTH FROM created_at) IN (6, 7, 8) THEN 'Summer'
                         ELSE 'Autumn'
-                  END AS Season,
-                  COUNT(*) AS user_count
+                  END AS season
                   FROM routines_dailyquestionnaire
-                  GROUP BY Season
-                  ORDER BY Season
+                  GROUP BY season
+                  ORDER BY season
             ;;
   }
   # The sql_table_name parameter indicates the underlying database table
@@ -49,6 +48,13 @@ view: routines_dailyquestionnaire {
     # Here's what a typical dimension looks like in LookML.
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Diet Today" in Explore.
+
+
+  dimension: season {
+    type: string
+    sql: ${TABLE}."season" ;;
+  }
+
 
   dimension: diet_today {
     type: string
