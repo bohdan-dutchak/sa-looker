@@ -20,7 +20,6 @@ view: routines_dailyquestionnaire {
                         WHEN EXTRACT(MONTH FROM created_at) IN (6, 7, 8) THEN 'Summer'
                         ELSE 'Autumn'
                   END AS Season,
-                  skin_feeling,
                   COUNT(*) AS user_count
                 FROM routines_dailyquestionnaire
             ;;
