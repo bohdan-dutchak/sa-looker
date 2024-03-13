@@ -13,7 +13,7 @@ view: routines_dailyquestionnaire {
              stress_levels,
              user_id,
              water,
-             created_at
+             created_at,
              CASE
                         WHEN EXTRACT(MONTH FROM created_at) IN (12, 1, 2) THEN 'Winter'
                         WHEN EXTRACT(MONTH FROM created_at) IN (3, 4, 5) THEN 'Spring'
