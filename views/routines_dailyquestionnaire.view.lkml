@@ -21,7 +21,9 @@ view: routines_dailyquestionnaire {
                         ELSE 'Autumn'
                   END AS Season,
                   COUNT(*) AS user_count
-                FROM routines_dailyquestionnaire
+                  FROM routines_dailyquestionnaire
+                  GROUP BY Season
+                  ORDER BY Season
             ;;
   }
   # The sql_table_name parameter indicates the underlying database table
