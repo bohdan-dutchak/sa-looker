@@ -6,11 +6,8 @@ view: routines_dailyquestionnaire {
              exercise_hours,
              feeling_today,
              hours_of_sleep,
-             coffee,
-             junk_food,
-             smoking,
-             alcohol,
-             skin_feel
+             life_happened,
+             skin_feel,
              sleep_quality,
              something_special,
              stress_levels,
