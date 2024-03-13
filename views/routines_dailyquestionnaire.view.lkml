@@ -1,8 +1,35 @@
-# The name of this view in Looker is "Routines Dailyquestionnaire"
 view: routines_dailyquestionnaire {
+  derived_table: {
+    sql:
+      SELECT id,
+             diet_today,
+             exercise_hours,
+             feeling_today,
+             hours_of_sleep,
+             coffee,
+             junk_food,
+             smoking,
+             alcohol,
+             skin_feel
+             sleep_quality,
+             something_special,
+             stress_levels,
+             user_id,
+             water,
+             created,
+             CASE
+                        WHEN EXTRACT(MONTH FROM created_at) IN (12, 1, 2) THEN 'Winter'
+                        WHEN EXTRACT(MONTH FROM created_at) IN (3, 4, 5) THEN 'Spring'
+                        WHEN EXTRACT(MONTH FROM created_at) IN (6, 7, 8) THEN 'Summer'
+                        ELSE 'Autumn'
+                  END AS Season,
+                  skin_feeling,
+                  COUNT(*) AS user_count
+                FROM routines_dailyquestionnaire
+            ;;
+  }
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: public.routines_dailyquestionnaire ;;
   drill_fields: [id]
 
   # This primary key is the unique key for this table in the underlying database.
