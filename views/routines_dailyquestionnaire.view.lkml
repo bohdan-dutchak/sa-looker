@@ -5,7 +5,14 @@ view: routines_dailyquestionnaire {
              diet_today,
              exercise_hours,
              feeling_today,
-             hours_of_sleep,
+             CASE
+                        WHEN hours_of_sleep <= 4 THEN "0-4 hours"
+                        WHEN hours_of_sleep >= 5 AND hours_of_sleep <= 6 THEN "5-6 hours"
+                        WHEN hours_of_sleep >= 7 AND hours_of_sleep <= 8 THEN "7-8 hours"
+                        WHEN hours_of_sleep >= 9 AND hours_of_sleep <= 10 THEN "9-10 hours"
+                        WHEN hours_of_sleep > 10 THEN "10+ hours"
+                        ELSE "0 hours"
+                  END AS hours_of_sleep,
              life_happened,
              skin_feel,
              sleep_quality,
