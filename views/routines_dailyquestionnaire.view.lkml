@@ -21,8 +21,6 @@ view: routines_dailyquestionnaire {
                         ELSE 'Autumn'
                   END AS season
                   FROM routines_dailyquestionnaire
-                  GROUP BY season
-                  ORDER BY season
             ;;
   }
   # The sql_table_name parameter indicates the underlying database table
