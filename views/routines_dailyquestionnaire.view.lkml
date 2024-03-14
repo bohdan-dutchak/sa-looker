@@ -31,7 +31,7 @@ view: routines_dailyquestionnaire {
                         WHEN EXTRACT(MONTH FROM created_at) IN (12, 1, 2) THEN 'Winter'
                         WHEN EXTRACT(MONTH FROM created_at) IN (3, 4, 5) THEN 'Spring'
                         WHEN EXTRACT(MONTH FROM created_at) IN (6, 7, 8) THEN 'Summer'
-                        ELSE 'Autumn'
+                        WHEN EXTRACT(MONTH FROM created_at) IN (9, 10, 11) THEN 'Autumn'
                   END AS season
                   FROM routines_dailyquestionnaire
             ;;
