@@ -12,7 +12,7 @@ view: routines_dailyquestionnaire {
                         WHEN hours_of_sleep >= 9 AND hours_of_sleep <= 10 THEN '9-10 hours'
                         WHEN hours_of_sleep > 10 THEN '10+ hours'
                         ELSE '- hours'
-                  END AS hours_of_sleep,
+                  END AS ranges_of_sleep,
              life_happened,
              skin_feel,
              sleep_quality,
