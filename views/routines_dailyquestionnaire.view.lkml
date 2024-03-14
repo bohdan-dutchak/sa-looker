@@ -7,7 +7,7 @@ view: routines_dailyquestionnaire {
              CASE
                         WHEN exercise_hours = 'ZERO' THEN '0 minutes'
                         WHEN exercise_hours = 'TWENTY_MIN' OR exercise_hours = 'THIRTY_MIN' OR exercise_hours = 'FORTY_FIVE_MIN' OR exercise_hours = 'ONE_HOUR' THEN '20 - 60 minutes'
-                        WHEN exercise_hours = 'ONE_AND_A_HALF_HOURS' OR exercise_hours = 'TWO_HOURS' OR exercise_hours = 'TWO_PLUS'  THEN 'More than 1,5 hours'
+                        WHEN exercise_hours = 'ONE_AND_A_HALF_HOURS' OR exercise_hours = 'TWO_HOURS' OR exercise_hours = 'TWO_PLUS'  THEN 'More than 1 hour'
                         ELSE '- hours'
                   END AS ranges_of_exercise,
              feeling_today,
