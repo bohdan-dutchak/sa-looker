@@ -77,8 +77,13 @@ view: routines_dailyquestionnaire {
   }
 
   dimension: hours_of_sleep {
-    type: string
+    type: number
     sql: ${TABLE}."hours_of_sleep" ;;
+  }
+
+  dimension: ranges_of_sleep {
+    type: string
+    sql: ${TABLE}."ranges_of_sleep" ;;
   }
 
   dimension: coffee {
