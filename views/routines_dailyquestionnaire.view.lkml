@@ -77,7 +77,7 @@ view: routines_dailyquestionnaire {
   }
 
   dimension: hours_of_sleep {
-    type: number
+    type: string
     sql: ${TABLE}."hours_of_sleep" ;;
   }
 
