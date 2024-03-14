@@ -4,6 +4,12 @@ view: routines_dailyquestionnaire {
       SELECT id,
              diet_today,
              exercise_hours,
+             CASE
+                        WHEN exercise_hours = 'ZERO' THEN '0 minutes'
+                        WHEN exercise_hours = 'TWENTY_MIN' OR exercise_hours = 'THIRTY_MIN' OR exercise_hours = 'FORTY_FIVE_MIN' OR exercise_hours = 'ONE_HOUR' THEN '20 - 60 minutes'
+                        WHEN exercise_hours = 'ONE_AND_A_HALF_HOURS' OR exercise_hours = 'TWO_HOURS' OR exercise_hours = 'TWO_PLUS'  THEN 'More than 1,5 hours'
+                        ELSE '- hours'
+                  END AS ranges_of_exercise,
              feeling_today,
              CASE
                         WHEN hours_of_sleep <= 4 THEN '0-4 hours'
@@ -69,6 +75,11 @@ view: routines_dailyquestionnaire {
   dimension: exercise_hours {
     type: string
     sql: ${TABLE}."exercise_hours" ;;
+  }
+
+  dimension: ranges_of_exercise {
+    type: string
+    sql: ${TABLE}."ranges_of_exercise" ;;
   }
 
   dimension: feeling_today {
