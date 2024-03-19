@@ -1,14 +1,9 @@
-view: products {
+view: brands_limit {
   derived_table: {
     sql:
       SELECT routines_dailyproduct.id,
              created_at,
              name,
-             ingredients,
-             type,
-             is_medication,
-             product_info_id,
-             group_id,
              CASE
                        WHEN LOWER(brand) LIKE 'aa%' THEN 'AA'
                        WHEN brand IN ('ACO ') THEN 'ACO'
@@ -110,7 +105,7 @@ view: products {
                        ELSE brand
               END as brand
       FROM routines_dailyproduct
-
+      LIMIT {% parameter row_limit %}
       ;;
   }
   drill_fields: [id]
@@ -127,11 +122,6 @@ view: products {
     sql: ${TABLE}."created_at" ;;
   }
 
-  dimension: product_info_id {
-    type: number
-    sql: ${TABLE}."product_info_id" ;;
-  }
-
   dimension: name {
     type: string
     sql: ${TABLE}."name";;
@@ -140,26 +130,6 @@ view: products {
   dimension: brand {
     type: string
     sql: ${TABLE}."brand";;
-  }
-
-  dimension: ingredients {
-    type: string
-    sql: ${TABLE}."ingredients" ;;
-  }
-
-  dimension: is_medication {
-    type: yesno
-    sql: ${TABLE}."is_medication" ;;
-  }
-
-  dimension: type {
-    type: string
-    sql: ${TABLE}."type" ;;
-  }
-
-  dimension: group_id {
-    type: string
-    sql: ${TABLE}."group_id" ;;
   }
 
   measure: count {
@@ -172,7 +142,7 @@ view: products {
     allowed_value: { value: "20" }
     allowed_value: { value: "50" }
     allowed_value: { value: "100" }
-    default_value: "50000"
+    default_value: "500"
   }
 
 }
