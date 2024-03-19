@@ -110,6 +110,7 @@ view: products {
                        ELSE brand
               END as brand
       FROM routines_dailyproduct
+      LIMIT {% parameter row_limit %}
       ;;
   }
   drill_fields: [id]
@@ -173,4 +174,5 @@ view: products {
     allowed_value: { value: "100" }
     default_value: "20"
   }
+
 }
