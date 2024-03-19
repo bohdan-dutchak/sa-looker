@@ -165,4 +165,12 @@ view: products {
     type: count
     drill_fields: [id, name]
   }
+
+  parameter: row_limit {
+    type: number
+    allowed_value: { value: "20" }
+    allowed_value: { value: "50" }
+    allowed_value: { value: "100" }
+    default_value: "20"
+  }
 }
