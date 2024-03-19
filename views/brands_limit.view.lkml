@@ -1,11 +1,9 @@
 view: brands_limit {
   derived_table: {
     sql:
-      SELECT routines_dailyproduct.id,
-             created_at,
-             name,
-             CASE
-                       WHEN LOWER(brand) LIKE 'aa%' THEN 'AA'
+      SELECT
+        CASE
+          WHEN LOWER(brand) LIKE 'aa%' THEN 'AA'
                        WHEN brand IN ('ACO ') THEN 'ACO'
                        WHEN brand IN ('A-derma ', 'A derma') THEN 'A-derma'
                        WHEN brand IN ('Alma K ') THEN 'Alma K'
@@ -102,47 +100,31 @@ view: brands_limit {
                        WHEN LOWER(brand) LIKE 'valel%' THEN 'Vaseline'
                        WHEN LOWER(brand) LIKE 'sephora%' THEN 'Sephora'
                        WHEN LOWER(brand) LIKE '%seth%' THEN 'Dr. Sheth''s'
-                       ELSE brand
-              END as brand
+          ELSE brand
+        END AS brand,
+        COUNT(*) AS brand_count
       FROM routines_dailyproduct
+      GROUP BY brand
+      ORDER BY brand_count DESC
       LIMIT {% parameter row_limit %}
-      ;;
-  }
-  drill_fields: [id]
-
-  dimension: id {
-    primary_key: yes
-    type: number
-    sql: ${TABLE}."id" ;;
-  }
-
-  dimension_group: created_at {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."created_at" ;;
-  }
-
-  dimension: name {
-    type: string
-    sql: ${TABLE}."name";;
+    ;;
   }
 
   dimension: brand {
     type: string
-    sql: ${TABLE}."brand";;
+    sql: ${TABLE}.normalized_brand ;;
   }
 
-  measure: count {
+  measure: brand_count {
     type: count
-    drill_fields: [id, name]
+    sql: ${TABLE}.brand_count ;;
   }
 
   parameter: row_limit {
     type: number
+    allowed_value: { value: "10" }
     allowed_value: { value: "20" }
     allowed_value: { value: "50" }
-    allowed_value: { value: "100" }
-    default_value: "500"
+    default_value: "20"
   }
-
 }
