@@ -83,11 +83,6 @@ explore: users_user {
     sql_on: ${users_user.id}=${user_count.id} ;;
   }
 
-  join: brands_limit {
-    type: left_outer
-    relationship: many_to_many
-    sql_on: ${products.group_id} = ${product_group.id} ;;
-  }
 
 }
 
