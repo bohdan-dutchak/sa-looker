@@ -21,7 +21,7 @@ view: products {
                        WHEN brand IN ('Ajanta Pharma Ltd', 'Ajanta pharmaceuticals') THEN 'Ajanta Pharma Ltd'
                        WHEN brand IN ('Aroma Magic ') THEN 'Aroma Magic'
                        WHEN brand IN ('Aveeno') THEN 'Aveeno'
-                       WHEN brand IN ('Avene', 'Avene ', 'avene ') THEN 'Avene'
+                       WHEN brand IN ('Avene', 'Avene ', 'avene ', 'Avène') THEN 'Avene'
                        WHEN LOWER(brand) LIKE '%avon%' THEN 'Avon'
                        WHEN brand IN ('Axis- Y') THEN 'AXIS-Y'
                        WHEN LOWER(brand) LIKE 'ayur%' THEN 'Ayur'
