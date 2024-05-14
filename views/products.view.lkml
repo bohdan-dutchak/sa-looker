@@ -9,6 +9,11 @@ view: products {
              is_medication,
              product_info_id,
              group_id,
+             accessibility_score,
+             efficiency_score,
+             preference_score,
+             satisfaction_score,
+             easy_to_use_score,
              CASE
                        WHEN LOWER(brand) LIKE 'aa%' THEN 'AA'
                        WHEN brand IN ('ACO ') THEN 'ACO'
@@ -209,6 +214,34 @@ view: products {
   dimension: group_id {
     type: string
     sql: ${TABLE}."group_id" ;;
+  }
+
+
+  dimension: accessibility_score {
+    type: number
+    sql: ${TABLE}."accessibility_score" ;;
+  }
+
+  dimension: efficiency_score {
+    type: number
+    sql: ${TABLE}."efficiency_score" ;;
+  }
+
+  dimension: preference_score {
+    type: number
+    sql: ${TABLE}."preference_score" ;;
+  }
+
+
+  dimension: satisfaction_score {
+    type: number
+    sql: ${TABLE}."satisfaction_score" ;;
+  }
+
+
+  dimension: easy_to_use_score {
+    type: number
+    sql: ${TABLE}."easy_to_use_score" ;;
   }
 
   measure: count {

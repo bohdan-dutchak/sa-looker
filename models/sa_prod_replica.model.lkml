@@ -53,12 +53,6 @@ explore: users_user {
     sql_on: ${products.group_id} = ${product_group.id} ;;
   }
 
-  join: products_rates {
-    type: left_outer
-    relationship: many_to_many
-    sql_on: ${products.group_id} = ${product_group.id} ;;
-  }
-
   join: facescans{
     type: left_outer
     relationship: one_to_many
