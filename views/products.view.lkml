@@ -249,4 +249,29 @@ view: products {
     drill_fields: [id, name]
   }
 
-}
+  measure: accessibility_score_count {
+    type: count
+    drill_fields: [brand, accessibility_score]
+  }
+
+  measure: efficiency_score_count {
+    type: count
+    drill_fields: [brand, efficiency_score]
+  }
+
+  measure: preference_score_count {
+    type: count
+    drill_fields: [brand, preference_score]
+  }
+
+  measure: satisfaction_score_count {
+    type: count
+    drill_fields: [brand, satisfaction_score]
+  }
+
+  measure: easy_to_use_score_count {
+    type: count
+    drill_fields: [brand, easy_to_use_score]
+  }
+
+ }
