@@ -86,7 +86,7 @@ explore: users_user {
   join: facescan_count {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${users_user.id}=${facescans.user_id} ;;
+    sql_on: ${facescans.user_id}=${facescan_count.face_scan_id} ;;
   }
 
 
