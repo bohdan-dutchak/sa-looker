@@ -1,31 +1,49 @@
 view: facescan_count {
-  sql_table_name: routines_facescananalytics ;; # Replace 'your_database_schema' with your actual schema name
+  derived_table: {
+    sql:
+      SELECT face_scan_id,
+      user_id,
+      rf.created_at,
+          FROM public.routines_facescananalytics
+          INNER JOIN public.routines_facescan rf on public.routines_facescananalytics.face_scan_id = rf.id
+     ;;
+  }
+  drill_fields: [face_scan_id]
+  # This primary key is the unique key for this table in the underlying database.
+  # You need to define a primary key in a view in order to join to other views.
 
-  dimension: id {
+  dimension: face_scan_id {
     primary_key: yes
     type: number
-    sql: ${TABLE}."id" ;;
+    sql: ${TABLE}."face_scan_id" ;;
   }
 
-  dimension: date_joined {
-    type: date
-    sql: ${TABLE}.date_joined ;; # This maps to the join date column in your users table
+  dimension_group: created {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: ${TABLE}."created_at" ;;
   }
 
-  dimension_group: joined_week {
+  dimension_group: created_week {
     type: time
     timeframes: [week, year]
-    sql: ${date_joined} ;; # This creates dimensions for the week and year of the join date
+    sql: ${TABLE}."created_at" ;; # This creates dimensions for the week and year of the join date
   }
 
-  measure: count_users {
+  dimension: user_id {
+    type: number
+    sql: ${TABLE}."user_id" ;;
+  }
+
+
+  measure: facescan_count {
     type: count
-    drill_fields: [id] # Assuming 'details' is a set of dimensions you want to explore further
+    drill_fields: [face_scan_id]
   }
 
-  measure: cumulative_users {
+  measure: cumulative_facescans {
     type: running_total
-    sql: ${count_users} ;;
+    sql: ${facescan_count} ;;
   }
 
 }
