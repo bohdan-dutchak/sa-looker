@@ -83,6 +83,12 @@ explore: users_user {
     sql_on: ${users_user.id}=${user_count.id} ;;
   }
 
+  join: facescan_count {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${users_user.id}=${facescans.user_id} ;;
+  }
+
 
 }
 
